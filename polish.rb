@@ -1,10 +1,11 @@
 
-class RPNCalculator
+class RPN
+
     def evaluate
+        evaluation = []
+        until evaluation.include?('q')
         expression = gets.split 				# splits input on breaks
         operands = []
-        evaluation = []
-
         expression.each do |x|
             case x
                 when /\d/ 							# When a digit, do this
@@ -12,16 +13,15 @@ class RPNCalculator
                 when "-", "/", "*", "+", "**"			# When it hits an operand, do this
                     operands = evaluation.pop(2)		# pop last two numbers off, assign them to operands
                     evaluation.push(operands[0].send(x, operands[1]))  # push new evaluation in to array
+                when "q"
+                    puts "Quitting"
+                    exit
             end
         end
         puts evaluation
     end
 end
+end
 
-oi = RPNCalculator.new
-oi.evaluate
-
-
-# get input, puts in to array
-# when input is operand, pop last two and execute
-# put out total
+calc = RPN.new
+calc.evaluate
