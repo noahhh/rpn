@@ -2,15 +2,16 @@ class RPN
     def evaluate
         evaluation = []
         until evaluation.include?('q')
-        input = gets.split 				                             # splits input on breaks
+        # puts '> '
+        input = gets.chomp.split 	                                 # splits input on breaks
         symbols = []
         input.each do |a|
             case a
-                when "-", "/", "*", "+"			                     # When it hits an operand, do this
+            when "-", "/", "*", "+"			                         # When it hits an operand, do this
                 if evaluation.size > 1
-                    symbols = evaluation.pop(2)		             # pop last two numbers off (operand is in last place), assign them to symbols
-                    evaluation.push(symbols[0].send(a, symbols[1]))  # push
-                else
+                    symbols = evaluation.pop(2)		                 # pop last two numbers off (operand is in last place), assign them to symbols
+                    evaluation.push(symbols[0].send(a, symbols[1]))  # Take two before last.  push number(symbols[0]), a(which is operand in this 'when'), 
+                else                                                 # and number (symbols[1]).  Send will send [0] to operand and [1], push in to array.  
                     puts "you can't do that."
                 end
                 when /\d/                                            # When a digit, do this
@@ -20,13 +21,16 @@ class RPN
                     exit
                 end
             end
-            puts evaluation
+            puts evaluation.last
         end
     end
 end
 
 calc = RPN.new
 calc.evaluate
+
+# Need to make it so if symbol is added but isn't last, doesn't allow
+
 
 
 # DONE?
