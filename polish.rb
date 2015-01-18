@@ -1,6 +1,6 @@
     evaluation = []
     until evaluation.include?('q')
-        input = STDIN.gets.chomp.split 	                                
+        input = gets.chomp.split 	                                
         symbols = []
         input.each do |a|
             case a
@@ -20,5 +20,5 @@
                     puts "Please enter a number or operation."
                 end
             end
-            STDOUT.puts evaluation
+            puts evaluation
         end
