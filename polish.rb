@@ -1,5 +1,3 @@
-# class RPN
-    # def evaluate
     evaluation = []
     until evaluation.include?('q')
         input = STDIN.gets.chomp.split 	                                
@@ -24,17 +22,3 @@
             end
             STDOUT.puts evaluation
         end
-    # end
-# end
-
-# calc = RPN.new
-# calc.evaluate
-
-# Need to make it so if symbol is added but isn't last, doesn't allow
-
-
-
-# DONE?
-# Need to bank the symbols if put in before two numbers/tell them they can't do that
-
-# breaks when more symbols than numbers are in there
